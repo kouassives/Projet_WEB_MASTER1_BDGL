@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+   <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css"/>
+   </h:head>
+
+    <h:body>
+
+        <ui:composition template="./Menu.xhtml">
+
+            <ui:define name="top">
+                <h1 align="center">Gestions des articles</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <a href="AjoutClient.xhtml">Gestion des clients<br /></a>
+                <a href="AjoutArticles.xhtml">Gestion des articles</a>
+            </ui:define>
+
+            <ui:define name="right">
+                right
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form> 
+                        <h1>Ajout d'article</h1>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Code" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_article.arti.code}" class="form-control"></h:inputText>
+                            <h:outputText value="Code Categorie" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_article.arti.codeCategorie}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Désignation" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_article.arti.designation}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Quantité" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_article.arti.quantite}" class="form-control"></h:inputText>
+                            <h:outputText value="Prix Unitaire" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_article.arti.prixUnitaire}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="8">
+                            <h:commandButton value="Ajouter" action="#{bean_article.ajoutArticle()}" class="form-control"></h:commandButton><h:commandButton value="Effacer" action="#{bean_article.ajoutArticle()}" class="form-control"></h:commandButton><h:commandButton value="Modifier" action="#{bean_article.ajoutArticle()}" class="form-control"></h:commandButton><h:commandButton value="Anuler" action="#{bean_article.ajoutArticle()}" class="form-control"></h:commandButton>
+                        </h:panelGrid>
+                        <h:inputText value="#{bean_article.msg}" class="form-control"></h:inputText>
+                    </h:form>
+                    
+                    
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{bean_article.afficheArticle()}" var="item" border="1"
+                                     class="table table-striped">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Code"/>
+                                </f:facet>
+                                <h:outputText value="#{item.code}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CodeCategorie"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codeCategorie}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Designation"/>
+                                </f:facet>
+                                <h:outputText value="#{item.designation}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Quantite"/>
+                                </f:facet>
+                                <h:outputText value="#{item.quantite}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrixUnitaire"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prixUnitaire}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                    
+                    
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

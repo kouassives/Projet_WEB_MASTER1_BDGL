@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css"/>
+    </h:head>
+    <body>
+
+        <ui:composition template="./Menu.xhtml">
+
+            <ui:define name="top">
+                <h1 align="center">Gestion des clients</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                 <a href="AjoutClient.xhtml">Gestion des clients<br /></a>
+                 <a href="AjoutArticles.xhtml">Gestion des articles</a>
+            </ui:define>
+
+            <ui:define name="right">
+                right
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1>Ajout client</h1>
+                        <h:panelGrid columns="6">
+                            <h:outputText value="Code" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.code}" class="form-control"></h:inputText>
+                            <h:outputText value="Date creation" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.date}" class="form-control"></h:inputText>
+                            <h:outputText value="Carte fidélité" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.carteFidele}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Nom" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.nom}" class="form-control"></h:inputText>
+                            <h:outputText value="Prénom" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.prenom}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Code postal" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.codePostal}" class="form-control"></h:inputText>
+                            <h:outputText value="Ville" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.ville}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Tex-fixe" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.telFixe}" class="form-control"></h:inputText>
+                            <h:outputText value="Mobilis" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.mobilis}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Email" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.email}" class="form-control"></h:inputText>
+                            <h:outputText value="adresse" class="form-control"></h:outputText>
+                            <h:inputText value="#{bean_client.cli.adresse}" class="form-control"></h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid>
+                            <h:outputText value="Remarques" class="form-control"></h:outputText>
+                            <h:inputTextarea value="#{bean_client.cli.remarques}" class="form-control"></h:inputTextarea>
+                        </h:panelGrid>
+                        <h:panelGrid>
+                            <h:commandButton value="Ajouter" action="#{bean_client.ajoutClient()}" class="form-control"></h:commandButton>
+                        </h:panelGrid>
+                        <h:inputText value="#{bean_client.msg}" class="form-control"></h:inputText>
+                    </h:form>
+                    
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{bean_client.afficheClient()}" var="item" border="1" 
+                                     class="table table-striped">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Code"/>
+                                </f:facet>
+                                <h:outputText value="#{item.code}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Prenom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prenom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Adresse"/>
+                                </f:facet>
+                                <h:outputText value="#{item.adresse}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CodePostal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codePostal}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ville"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ville}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TelFixe"/>
+                                </f:facet>
+                                <h:outputText value="#{item.telFixe}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Mobilis"/>
+                                </f:facet>
+                                <h:outputText value="#{item.mobilis}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Email"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Adresse"/>
+                                </f:facet>
+                                <h:outputText value="#{item.adresse}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Remarques"/>
+                                </f:facet>
+                                <h:outputText value="#{item.remarques}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CarteFidele"/>
+                                </f:facet>
+                                <h:outputText value="#{item.carteFidele}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
