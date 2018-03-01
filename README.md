@@ -5,7 +5,7 @@
 
 
 # Projet_WEB_MASTER1_BDGL
-
+---
 
 ## Mode d'utilisation
-   La base de données est intégrée au projet.
+   La base de données : ressources/database/
